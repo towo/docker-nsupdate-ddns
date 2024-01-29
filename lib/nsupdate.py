@@ -9,7 +9,7 @@ config = {}
 
 def add_records(records):
     keyring = dns.tsigkeyring.from_text(
-        {config['TSIG_NAME']: config['TSIG_KEY']})
+        {config['TSIG_NAME']: (config['TSIG_ALGORITHM'], config['TSIG_KEY'])})
 
     for hostname, ip in records.items():
         print(datetime.now().isoformat(), end=" ")
@@ -29,7 +29,7 @@ def add_records(records):
 
 def delete_records(records):
     keyring = dns.tsigkeyring.from_text(
-        {config['TSIG_NAME']: config['TSIG_KEY']})
+        {config['TSIG_NAME']: (config['TSIG_ALGORITHM'], config['TSIG_KEY'])})
 
     for hostname, ip in records.items():
         print(datetime.now().isoformat(), end=" ")
